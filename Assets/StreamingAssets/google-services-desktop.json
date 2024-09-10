@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "1007149929010",
+    "project_id": "ball-slash-hero",
+    "storage_bucket": "ball-slash-hero.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007149929010:ios:6fc4a7f439a208c2b2a22b",
+        "android_client_info": {
+          "package_name": "com.cjlvidslimited.ballslashhero"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8e0RUov0Ko8zhIwBVXkq276uMWAV5h64"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
