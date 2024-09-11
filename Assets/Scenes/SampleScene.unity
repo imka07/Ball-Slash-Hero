@@ -3265,7 +3265,6 @@ GameObject:
   - component: {fileID: 660334841}
   - component: {fileID: 660334840}
   - component: {fileID: 660334839}
-  - component: {fileID: 660334842}
   m_Layer: 5
   m_Name: Support
   m_TagString: Untagged
@@ -3335,7 +3334,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 660334840}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 908017561}
+        m_TargetAssemblyTypeName: OpenViewButton, Assembly-CSharp
+        m_MethodName: ShowWebPage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: https://docs.google.com/forms/d/e/1FAIpQLSco3HnSaeToHK16B-2S0aUL8YXaPm0rpzm3bVLeLO17dk8Hdg/viewform
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &660334840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3374,19 +3385,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660334837}
   m_CullTransparentMesh: 1
---- !u!114 &660334842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 660334837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d7f88ced76564b1089423d0c8f99494, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: https://forms.gle/nWxB6SSrPAwk98yx6
 --- !u!1 &734103507
 GameObject:
   m_ObjectHideFlags: 0
@@ -3976,6 +3974,7 @@ GameObject:
   m_Component:
   - component: {fileID: 908017559}
   - component: {fileID: 908017560}
+  - component: {fileID: 908017561}
   m_Layer: 0
   m_Name: _FireBase
   m_TagString: Untagged
@@ -4010,6 +4009,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab380604947364c4e8d0fa52ed9842be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &908017561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908017557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d7f88ced76564b1089423d0c8f99494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firebaseInitializer: {fileID: 908017560}
 --- !u!1 &969269206
 GameObject:
   m_ObjectHideFlags: 0
@@ -6440,7 +6452,6 @@ GameObject:
   - component: {fileID: 1791661481}
   - component: {fileID: 1791661480}
   - component: {fileID: 1791661479}
-  - component: {fileID: 1791661482}
   m_Layer: 5
   m_Name: Privacy
   m_TagString: Untagged
@@ -6510,7 +6521,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1791661480}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 908017561}
+        m_TargetAssemblyTypeName: OpenViewButton, Assembly-CSharp
+        m_MethodName: ShowWebPage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: https://cjlvidslimited.com/privacy-policy/
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1791661480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6549,19 +6572,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791661477}
   m_CullTransparentMesh: 1
---- !u!114 &1791661482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1791661477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d7f88ced76564b1089423d0c8f99494, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: https://cjlvidslimited.com/privacy-policy/
 --- !u!1 &1816142539
 GameObject:
   m_ObjectHideFlags: 0
@@ -6653,7 +6663,6 @@ GameObject:
   - component: {fileID: 1835312712}
   - component: {fileID: 1835312711}
   - component: {fileID: 1835312710}
-  - component: {fileID: 1835312713}
   m_Layer: 5
   m_Name: TermsOfUse
   m_TagString: Untagged
@@ -6723,7 +6732,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1835312711}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 908017561}
+        m_TargetAssemblyTypeName: OpenViewButton, Assembly-CSharp
+        m_MethodName: ShowWebPage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: https://cjlvidslimited.com/terms/
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1835312711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6762,19 +6783,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835312708}
   m_CullTransparentMesh: 1
---- !u!114 &1835312713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1835312708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d7f88ced76564b1089423d0c8f99494, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: https://cjlvidslimited.com/terms/
 --- !u!1 &1840042624
 GameObject:
   m_ObjectHideFlags: 0

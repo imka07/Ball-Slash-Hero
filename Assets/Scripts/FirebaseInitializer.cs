@@ -1,5 +1,8 @@
+using System;
 using Firebase;
+using Firebase.Analytics;
 using Firebase.Extensions;
+using Firebase.Messaging;
 using Firebase.RemoteConfig;
 using UnityEngine;
 
@@ -7,78 +10,47 @@ public class FirebaseInitializer : MonoBehaviour
 {
     private const string ConfigDataKey = "saved_config_data";
 
+    public event Action<string> FirebaseInitialized;
+
     private void Start()
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
             if (task.Result == DependencyStatus.Available)
             {
+                var app = FirebaseApp.DefaultInstance;
                 var config = FirebaseRemoteConfig.DefaultInstance;
+
+                FirebaseMessaging.TokenReceived += (_, args) => Debug.Log($"Token Received {args}");
+                FirebaseMessaging.MessageReceived += (_, args) => Debug.Log($"Message Received {args}");
+
+                var data = string.Empty;
+                FirebaseAnalytics.LogEvent(FirebaseAnalytics.EventAppOpen);
 
                 if (PlayerPrefs.HasKey(ConfigDataKey))
                 {
-                    string savedLink = PlayerPrefs.GetString(ConfigDataKey);
-
-                    if (!string.IsNullOrEmpty(savedLink))
-                    {
-                        OpenWebView(savedLink);
-                    }
-                    else
-                    {
-                        ShowGame();
-                    }
+                    data = PlayerPrefs.GetString(ConfigDataKey);
+                    FirebaseInitialized?.Invoke(data); // Вызываем событие
                 }
                 else
                 {
-                    FetchRemoteConfig(config);
+                    config.FetchAndActivateAsync().ContinueWithOnMainThread(fetchTask =>
+                    {
+                        if (!fetchTask.IsCompleted || config.Info.LastFetchStatus != LastFetchStatus.Success)
+                            return;
+
+                        var configValue = config.GetValue("AccessControlKey").StringValue;
+
+                        PlayerPrefs.SetString(ConfigDataKey, configValue);
+                        data = configValue;
+                        FirebaseInitialized?.Invoke(data); // Вызываем событие
+                    });
                 }
             }
             else
             {
-                Debug.LogError($"Не удалось разрешить все зависимости Firebase: {task.Result}");
+                Debug.LogError($"Could not resolve all Firebase dependencies: {task.Result}");
             }
         });
-    }
-
-    private void FetchRemoteConfig(FirebaseRemoteConfig config)
-    {
-        config.FetchAndActivateAsync().ContinueWithOnMainThread(fetchTask =>
-        {
-            if (fetchTask.IsCompleted && config.Info.LastFetchStatus == LastFetchStatus.Success)
-            {
-                string configValue = config.GetValue("AccessControlKey").StringValue;
-
-                PlayerPrefs.SetString(ConfigDataKey, configValue);
-
-                if (!string.IsNullOrEmpty(configValue))
-                {
-                    OpenWebView(configValue);
-                }
-                else
-                {
-                    ShowGame();
-                }
-            }
-            else
-            {
-                Debug.LogError("Ошибка при получении данных из Remote Config.");
-                ShowGame(); 
-            }
-        });
-    }
-
-    private void OpenWebView(string url)
-    {
-        GameObject webViewObject = new GameObject("WebView");
-        UniWebView webView = webViewObject.AddComponent<UniWebView>();
-        webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
-        webView.Load(url);
-        webView.Show();
-    }
-
-    private void ShowGame()
-    {
-        Debug.Log("Ссылка пустая, запускаем игру.");
     }
 }
-
