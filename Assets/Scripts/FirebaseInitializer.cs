@@ -11,7 +11,9 @@ public class FirebaseInitializer : MonoBehaviour
     private const string ConfigDataKey = "saved_config_data";
 
     public event Action<string> FirebaseInitialized;
-
+    /// <summary>
+    /// 
+    /// </summary>
     private void Start()
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>

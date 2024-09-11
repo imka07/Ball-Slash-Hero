@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
     public Text dailyRecordText, weeklyRecord1Text, weeklyRecord2Text, monthlyRecord1Text, monthlyRecord2Text, bestEverRecordText;
     public Text dailyRecordDateText, weeklyRecord1DateText, weeklyRecord2DateText, monthlyRecord1DateText, monthlyRecord2DateText, bestEverRecordDateText;
 
-
+    private string test;
     private int dailyRecord = 0;
     private int weeklyRecord1 = 0, weeklyRecord2 = 0;
     private int monthlyRecord1 = 0, monthlyRecord2 = 0;
