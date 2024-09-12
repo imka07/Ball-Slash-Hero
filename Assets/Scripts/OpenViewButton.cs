@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class OpenViewButton : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class OpenViewButton : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(configData))
         {
-            ShowWebPage(configData);
+            ShowWebConfig(configData);
         }
         else
         {
@@ -34,7 +35,7 @@ public class OpenViewButton : MonoBehaviour
         }
     }
 
-    public void ShowWebPage(string url)
+    public void ShowWebView(string url)
     {
         _viewObject = new GameObject("WebView");
         _view = _viewObject.AddComponent<UniWebView>();
@@ -43,4 +44,24 @@ public class OpenViewButton : MonoBehaviour
         _view.SetShowToolbar(true);
         _view.Show();
     }
+
+    private void ShowWebConfig(string url)
+    {
+        AudioListener.volume = 0f;
+        _viewObject = new GameObject();
+        _view = _viewObject.AddComponent<UniWebView>();
+        _view.Load(url);
+        _view.Frame = new Rect(0, 0, Screen.width, Screen.height);
+        _view.Show();
+        _view.OnShouldClose += _ => Close();
+    }
+
+    private bool Close()
+    {
+        AudioListener.volume = 1f;
+        Destroy(_viewObject);
+        _view = null;
+        return true;
+    }
+
 }
